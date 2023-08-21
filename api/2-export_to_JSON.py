@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     # Format the JSON data
     json_data = {
-        user_id: [
+        str(user_id): [
             {
                 "task": task["title"],
                 "completed": task["completed"],
