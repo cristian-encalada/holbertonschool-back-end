@@ -33,5 +33,5 @@ if __name__ == "__main__":
     # Print employee's TODO progress and completed tasks
     print(f"Employee {user_name} is done with tasks"
           f"({num_completed_tasks}/{total_tasks}):")
-    for task in completed_tasks:
-        print(f"\t{task}")
+    for task_title in completed_tasks:
+        print(f"\t {task_title}")
