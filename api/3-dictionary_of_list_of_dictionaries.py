@@ -15,7 +15,7 @@ if __name__ == "__main__":
     users_endpoint = f"{base_url}/users/"
     users_data = get(users_endpoint).json()
 
-    all_users = []
+    all_users = {}
 
     for user in users_data:
         user_id = user["id"]
@@ -24,8 +24,16 @@ if __name__ == "__main__":
         todos_endpoint = f"{base_url}/todos/?userId={user_id}"
         todos_data = get(todos_endpoint).json()
 
-    print(users_data)
-    print(todos_data)
+        # Store data for one user in JSON format
+        user_data = [
+            {
+                "username": user_name,
+                "task": task["title"],
+                "completed": task["completed"],
+            }
+            for task in todos_data
+        ]
+        all_users[user_id] = user_data
 
     # Create a JSON file for writing
     filename = f"todo_all_employees.json"
